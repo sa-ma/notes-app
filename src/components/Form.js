@@ -56,7 +56,7 @@ const Form = ({
           required
         />
         <textarea
-          rows="5"
+          rows="10"
           className="modal-form-input"
           value={inputs.body}
           placeholder="Start typing ...."

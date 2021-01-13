@@ -55,17 +55,16 @@ body {
 .notes-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
 }
 .notes-item {
-  margin: 1rem 0;
+  margin: 1rem;
   padding: 1.5rem;
   border: 1px solid #5f6368;
   border-radius: 8px;
   color: #e8eaed;
-  max-width: 30rem;
+  width: 100%;
   min-height: 6rem;
   cursor: pointer;
 }
@@ -131,7 +130,7 @@ body {
 }
 .modal-form {
   background-color: transparent;
-  width: 50%;
+  width: 100%;
   margin: 2rem auto;
 }
 .modal-form-input {
@@ -144,4 +143,13 @@ body {
   background-color: #202124;
   width: 100%;
   border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .modal-form {
+    width: 50%;
+  }
+  .notes-item {
+    max-width: 30rem;
+  }
 }
