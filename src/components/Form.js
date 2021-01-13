@@ -14,14 +14,13 @@ const Form = ({
     if (note) {
       setInputs({ title: note.title, body: note.body });
     }
-  }, [note]);
+  }, [note, setInputs]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const { title, body } = inputs;
     if (!note.id) {
       addNote(title, body);
-      setInputs({ title: '', body: '' });
       return;
     }
     updateNote(note.id, title, body);

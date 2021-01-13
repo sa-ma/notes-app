@@ -46,10 +46,11 @@ const App = () => {
         console.log(res.json());
         getNotes();
         setToggle(false);
+        setInputs({ title: '', body: '' });
         toast.success('Note added successfully');
       })
       .catch((error) => {
-        console.log('Note not found', error);
+        console.log('Error adding note.', error);
         toast.error('Error adding note.');
       });
   };
@@ -66,7 +67,6 @@ const App = () => {
       }),
     })
       .then((res) => {
-        console.log(res.json());
         getNotes();
         setToggle(false);
         toast.success('Note updated successfully.');

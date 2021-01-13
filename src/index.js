@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 
 if (process.env.NODE_ENV === 'development') {
   makeServer({ environment: 'development' });
+} else {
+  makeServer();
 }
 ReactDOM.render(
   <React.StrictMode>
