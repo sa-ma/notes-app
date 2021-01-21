@@ -24,23 +24,24 @@ export function makeServer({ environment = 'test' } = {}) {
       });
     },
     routes() {
-      this.get('/notes', (schema, request) => {
+      this.namespace = 'api/notes';
+      this.get('/', (schema, request) => {
         return schema.notes.all();
       });
 
-      this.get('/notes/:id', (schema, request) => {
+      this.get('/:id', (schema, request) => {
         let id = request.params.id;
 
         return schema.notes.find(id);
       });
 
-      this.post('/notes', (schema, request) => {
+      this.post('/', (schema, request) => {
         let attrs = JSON.parse(request.requestBody);
 
         return schema.notes.create(attrs);
       });
 
-      this.patch('/notes/:id', (schema, request) => {
+      this.patch('/:id', (schema, request) => {
         let newAttrs = JSON.parse(request.requestBody);
         let id = request.params.id;
         let note = schema.notes.find(id);
@@ -48,7 +49,7 @@ export function makeServer({ environment = 'test' } = {}) {
         return note.update(newAttrs);
       });
 
-      this.delete('/notes/:id', (schema, request) => {
+      this.delete('/:id', (schema, request) => {
         let id = request.params.id;
 
         return schema.notes.find(id).destroy();

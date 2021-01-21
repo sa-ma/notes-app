@@ -16,13 +16,13 @@ const App = () => {
   }, []);
 
   const getNotes = () => {
-    fetch('/notes')
+    fetch('/api/notes')
       .then((res) => res.json())
       .then((data) => setNotes(data.notes))
       .catch((error) => console.log('Error fetching notes', error));
   };
   const getNote = (id) => {
-    fetch(`/notes/${id}`)
+    fetch(`/api/notes/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setNote(data.notes);
@@ -35,7 +35,7 @@ const App = () => {
       toast.error('Please fill all the required input fields');
       return;
     }
-    fetch('/notes', {
+    fetch('/api/notes', {
       method: 'POST',
       body: JSON.stringify({
         title: title,
@@ -59,7 +59,7 @@ const App = () => {
       toast.error('Please fill all the required input fields');
       return;
     }
-    fetch(`/notes/${id}`, {
+    fetch(`/api/notes/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         title: title,
@@ -77,7 +77,7 @@ const App = () => {
       });
   };
   const deleteNote = (id) => {
-    fetch(`/notes/${id}`, { method: 'DELETE' })
+    fetch(`/api/notes/${id}`, { method: 'DELETE' })
       .then((res) => {
         getNotes();
         toast.success('Note deleted successfully');
